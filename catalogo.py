@@ -1,9 +1,11 @@
-class Producto():
+class Producto:
     def __init__(self, codigo, stock):
         self.codigo = codigo
         self.stock = stock
+
     def __str__(self):
         return f"{self.codigo} - {self.stock}"
+
 
 class CatalogoProductos:
     def __init__(self):
@@ -39,7 +41,7 @@ class CatalogoProductos:
         else:
             print("\n")
             print(f"El producto '{codigo}' no existe")
-            
+
     def mostrar_productos(self):
         if not self.__productos:
             print("El catalogo esta vacio")
@@ -50,8 +52,7 @@ class CatalogoProductos:
                 print(f" Codigo: {codigo} | Stock: {stock}")
 
 
-
-def menu(): # Funcion para mostrar el menu de opciones
+def menu():  # Funcion para mostrar el menu de opciones
     print("\n")
     print("**************************")
     print("** MENU DE OPCIONES  **")
@@ -62,7 +63,8 @@ def menu(): # Funcion para mostrar el menu de opciones
     print("     5. Ver productos")
     print("     6. Salir de la aplicacion")
 
-#Aplicacion
+
+# Aplicacion
 
 if __name__ == "__main__":
     catalogo = CatalogoProductos()
@@ -72,7 +74,7 @@ if __name__ == "__main__":
         try:
             opcion = int(input("Ingrese una opcion: "))
             if opcion == 1:
-                try: 
+                try:
                     codigo = input("Ingrese el codigo del producto: ")
                     stock = int(input("Ingrese una cantidad de stock: "))
                     producto = Producto(codigo, stock)
@@ -83,16 +85,15 @@ if __name__ == "__main__":
             elif opcion == 2:
                 codigo = input("Que producto desea eliminar, Ingrese el codigo: ")
                 catalogo.eliminar_producto(codigo)
-                
 
             elif opcion == 3:
-                codigo = (input("Que producto desea modificar: "))
+                codigo = input("Que producto desea modificar: ")
                 try:
                     nuevo_stock = int(input("Cual es el nuevo stock: "))
                     catalogo.actualizar_stock(codigo, nuevo_stock)
                 except ValueError:
                     print("El stock debe ser un numero entero")
-            
+
             elif opcion == 4:
                 codigo = input("Ingrese el codigo del producto a verificar: ")
                 catalogo.verificar_producto(codigo)
@@ -106,56 +107,6 @@ if __name__ == "__main__":
 
             else:
                 print("Opcion no valida, ingrese una opcion del 1 al 6")
-                
+
         except ValueError:
             print("Ingresa una opcion valida")
-
-
-
-
-
-
-"""
-catalogo.agregar("A101", 10)
-catalogo.agregar("A102", 20)
-catalogo.agregar("A103", 80)
-catalogo.agregar("A104", 20)
-catalogo.agregar("A105", 60)
-
-catalogo.verificar_producto(codigo=102)
-catalogo.verificar_producto(codigo=501)
-catalogo.verificar_producto(codigo="A101")
-
-catalogo.mostrar_productos()
-"""
-
-
-
-"""
-El sistema debe ser capaz de:
-
- Agregar nuevos productos al catálogo, solicitando el código del
-producto y su stock inicial.
-
- Actualizar el stock de un producto cuando se realicen ingresos o retiros
-del inventario.
-
- Eliminar productos que ya no se encuentren en el inventario.
-
- Verificar si un producto específico existe en el catálogo, mediante su
-código.
-
- Mostrar todos los productos registrados y sus respectivos stocks de
-manera clara. 
----------------------------------------------------------------------
-
-Definir clases y funciones.
-
-Usar if __name__ == "__main__": como punto de entrada.
-
-Tener un bucle principal que controla el flujo.
-
-Mostrar un menú (en programas interactivos).
-
-Usar try/except para que el programa no se caiga.
-"""
